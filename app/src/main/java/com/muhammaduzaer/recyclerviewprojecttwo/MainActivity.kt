@@ -27,5 +27,12 @@ class MainActivity : AppCompatActivity() {
         val adapter = ToDoAdapter(todoList)
         recyclerViewItemList.adapter = adapter
         recyclerViewItemList.layoutManager = LinearLayoutManager(this)
+
+        buttonSubmitItem.setOnClickListener{
+            val title = editTextInputItem.text.toString()
+            val todo = ToDo(title, false)
+            todoList.add(todo)
+            adapter.notifyItemInserted(todoList.size -1)
+        }
     }
 }
